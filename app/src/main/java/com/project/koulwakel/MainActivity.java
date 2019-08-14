@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createAccount = (TextView)findViewById(R.id.create_account);
         email = (EditText)findViewById(R.id.email_sign_in) ;
+
         password = (EditText)findViewById(R.id.password_sign_in);
         buttonSignIn =(Button)findViewById(R.id.button);
 
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,register.class);
+                Intent intent = new Intent(MainActivity.this,HomeActivity.class);
                 startActivity(intent);
             }
         });

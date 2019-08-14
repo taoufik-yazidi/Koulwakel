@@ -17,6 +17,18 @@ public class SignUpForm {
     @Size(min = 6, max = 40)
     private String password;
 
+    @Override
+    public String toString() {
+        return "SignUpForm{" +
+                "name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", role=" + role +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     public SignUpForm(String name, String username, String email, String address, Set<String> role, String password) {
         this.name = name;
         this.username = username;

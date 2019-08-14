@@ -64,13 +64,13 @@ public class register extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  Log.i("name",name.getText().toString());
+               Log.i("name",name.getText().toString());
                 Log.i("email",email.getText().toString());
                 Log.i("userName",userName.getText().toString());
                 Log.i("adresse",adresse.getText().toString());
                 Log.i("password",password.getText().toString());
-                Log.i("confirmedPassword",confirmedPassword.getText().toString());*/
-                if (!TextUtils.isEmpty(name.toString().trim())||!TextUtils.isEmpty(email.toString().trim())
+                Log.i("confirmedPassword",confirmedPassword.getText().toString());
+               if (!TextUtils.isEmpty(name.toString().trim())||!TextUtils.isEmpty(email.toString().trim())
                         ||!TextUtils.isEmpty(userName.toString().trim())||!TextUtils.isEmpty(adresse.toString().trim())
                         ||!TextUtils.isEmpty(password.toString().trim())||!TextUtils.isEmpty(confirmedPassword.toString().trim())
                 ) {
@@ -83,11 +83,14 @@ public class register extends AppCompatActivity {
                 SignUpForm signUpForm = new SignUpForm(name.getText().toString(),userName.getText().toString(),email.getText().toString(),
                         adresse.getText().toString(),role ,password.getText().toString());
                 Call<SignUpForm> call = serviceRegister.register(signUpForm);
+                   Log.i("object ",signUpForm.toString() );
                 call.enqueue(new Callback<SignUpForm>() {
                     @Override
                     public void onResponse(Call<SignUpForm> call, Response<SignUpForm> response) {
-                       // Log.i("ddddd",""+response.code());
+                       Log.i("ddddd",""+response.code());
+                        //Log.i("responsecode",""+response.code());
                         if (response.code()==200){
+                              Log.i("responsecode",""+response.code());
                             Intent intent = new Intent(register.this,MainActivity.class);
                             /*intent.putExtra("EMAIL",email.getText().toString());
                             intent.putExtra("PASSWORD",password.getText().toString());*/
@@ -97,7 +100,7 @@ public class register extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SignUpForm> call, Throwable t) {
-
+                          Log.i("throwable",""+t.getMessage());
                     }
                 });
 
