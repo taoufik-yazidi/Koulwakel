@@ -1,5 +1,6 @@
 package com.project.koulwakel.service;
 
+import com.project.koulwakel.entity.JwtResponse;
 import com.project.koulwakel.entity.LoginForm;
 import com.project.koulwakel.entity.SignUpForm;
 
@@ -11,5 +12,5 @@ public interface ServiceRegister {
     @POST("register")
     Call<SignUpForm> register (@Body SignUpForm signUpForm);
     @POST("signin")
-    Call<LoginForm>Login (@Body LoginForm loginForm);
+    Call<JwtResponse>Login (@Body LoginForm loginForm);
 }

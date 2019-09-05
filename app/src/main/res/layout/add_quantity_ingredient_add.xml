@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="350dp"
+    android:layout_gravity="center"
+    android:background="@drawable/add_ingredinet_firdge_back"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Quantity Ingredient"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="quantity" />
+
+        <TextView
+
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/edit_text_quantity_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="20dp"
+            android:textStyle="italic"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_add_ingredinet_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finsh"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/boutton_background"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        />
+
+</LinearLayout>
