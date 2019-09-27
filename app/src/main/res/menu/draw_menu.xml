@@ -4,8 +4,17 @@
 
     <group >
         <item
-            android:id="@+id/id_frigo"
+            android:id="@+id/recette_menu_id"
+            android:icon="@drawable/ic_dish"
+            android:title="recette" />
 
+        <item
+            android:id="@+id/recherche_menu_id"
+            android:icon="@drawable/ic_search"
+            android:title="recherche" />
+
+        <item
+            android:id="@+id/frigo_menu_id"
             android:icon="@drawable/ic_fridge"
             android:title="frigo" />
     </group>

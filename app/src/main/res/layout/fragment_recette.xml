@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:layout_marginTop="50dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_recette_du_jour"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/background_2_radius_30_color6">
+
+
+            <TextView
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="40dp"
+                android:text="Nos Plats Du Jour"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+
+                android:textStyle="bold"
+                />
+
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/background_2_radius_30_color6"
+                    android:clipToPadding="false"
+                    android:foregroundGravity="center"
+                    android:overScrollMode="never">
+
+                </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+
+
+ <android.support.v4.widget.NestedScrollView
+     android:id="@+id/scroll_view_id"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     app:behavior_peekHeight="150dp"
+     app:layout_behavior="@string/bottom_sheet_behavior">
+
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Nos Recettes"
+             android:textColor="@color/white"
+             android:textSize="20dp"
+             android:textStyle="bold"
+             android:layout_marginBottom="5dp"
+             android:layout_marginLeft="20dp"/>
+         <RelativeLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="30dp"
+             android:background="@drawable/background_4_corner_radius_20"
+             >
+             <android.support.v7.widget.RecyclerView
+                 android:id="@+id/recycle_recette_id"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"/>
+         </RelativeLayout>
+
+
+     </RelativeLayout>
+
+
+
+
+
+ </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

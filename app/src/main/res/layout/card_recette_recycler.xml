@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    cardview:cardCornerRadius="30dp"
+    cardview:cardBackgroundColor="@android:color/black"
+    android:id="@+id/cardview_recette_jour_id"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="350dp"
+    android:layout_marginTop="50dp"
+    >
+    <ImageView
+        android:id="@+id/image_id_recette_jour"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_image_view_card_recette"
+
+
+        />
+
+
+
+
+
+</android.support.v7.widget.CardView>

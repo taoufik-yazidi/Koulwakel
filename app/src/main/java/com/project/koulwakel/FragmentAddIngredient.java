@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.Toast;
 
+import com.project.koulwakel.RecycleList.AdapterIngredient;
 import com.project.koulwakel.RecycleList.IngredientRecycle;
 import com.project.koulwakel.entity.IngeridentRecycle;
 import com.project.koulwakel.entity.Ingredient;
@@ -29,11 +30,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentAddIngredient  extends Fragment {
 
-   // static String categorie ;
+   static String categorie ;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // categorie =getArguments().getString("categorie");
+
+        categorie =getArguments().getString("categorie");
     }
 
     @Nullable
@@ -43,12 +45,12 @@ public class FragmentAddIngredient  extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-     //   Toast.makeText(getContext(), categorie, Toast.LENGTH_SHORT).show();
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
+        Toast.makeText(getContext(), categorie, Toast.LENGTH_SHORT).show();
 
         // inisalisation retrofit
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("https://koulouwakelprojectb32.herokuapp.com/")
+                .baseUrl("http://41.226.28.96:8090/")
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
@@ -61,6 +63,13 @@ public class FragmentAddIngredient  extends Fragment {
             @Override
             public void onResponse(Call<List<Ingredient>> call, Response<List<Ingredient>> response) {
                 Log.i("get all ingredinet",""+response.body().size());
+                List <Ingredient>ingredients= new ArrayList<>();
+                  ingredients=response.body();
+                RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_add_ingredient_fridge);
+                AdapterIngredient adapterIngredient = new AdapterIngredient(getContext() , ingredients);
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
+                recyclerView.setAdapter(adapterIngredient);
+
             }
 
             @Override
@@ -68,6 +77,10 @@ public class FragmentAddIngredient  extends Fragment {
               Log.i("fail get all ingredient","fail");
             }
         });
+
+//        Call<List<Byte[]>>PictureCall = serviceIngredient.getPictureIngredientById(,"Bearer "+MainActivity.dataBaseConfig.
+//                repositoryJwtResponse().
+//                LoadJwtResponseById(Long.valueOf(1)).getAccessToken());
 
     }
 }

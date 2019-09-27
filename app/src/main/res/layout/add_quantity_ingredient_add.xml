@@ -5,11 +5,12 @@
     android:layout_height="350dp"
     android:layout_gravity="center"
     android:background="@drawable/add_ingredinet_firdge_back"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/add_ingredient_quantity_layout">
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/header_layout_add_quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Quantity Ingredient"
@@ -42,7 +43,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/edit_text_quantity_ingredient"
+            android:id="@+id/unit_of_measure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

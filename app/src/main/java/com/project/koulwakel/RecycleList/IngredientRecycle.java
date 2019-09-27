@@ -1,7 +1,10 @@
 package com.project.koulwakel.RecycleList;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.project.koulwakel.AllIngredientDialog;
 import com.project.koulwakel.FridgeFragment;
 import com.project.koulwakel.R;
 import com.project.koulwakel.entity.IngeridentRecycle;
@@ -34,9 +38,27 @@ public class IngredientRecycle extends RecyclerView.Adapter<IngredientRecycle.My
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.card_view_ingredient,,false);
         return new MyViewHolder(view);*/
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.card_view_ingredient , viewGroup ,false);
-        return new MyViewHolder(view);
+//        View view = LayoutInflater.from(viewGroup.getContext())
+//                .inflate(R.layout.card_view_ingredient , viewGroup ,false);
+//        return new MyViewHolder(view);
+
+        View v ;
+        v=LayoutInflater.from(mContext).inflate(R.layout.card_view_ingredient,viewGroup,false);
+        MyViewHolder myViewHolder = new MyViewHolder(v);
+       // final Dialog dialogAllIngredient = new Dialog(mContext);
+        //dialogAllIngredient.setContentView(R.layout.all_ingredinet);
+        //TextView textView = dialogAllIngredient.findViewById(R.id.taoufik_id);
+
+        myViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager ft =((FragmentActivity)mContext).getSupportFragmentManager();
+                AllIngredientDialog  allIngredientDialog = AllIngredientDialog.newInstance();
+                allIngredientDialog.show(ft,"test");
+            }
+        });
+;
+        return myViewHolder ;
     }
 
     @Override

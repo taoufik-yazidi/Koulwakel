@@ -1,62 +1,73 @@
 package com.project.koulwakel;
 
+
 import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-//import android.util.Log;
 import android.view.MenuItem;
-//import android.widget.Toast;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity  {
 
-    DrawerLayout drawerLayout ;
-    ActionBarDrawerToggle drawerToggle ;
-    Toolbar toolbar ;
-    NavigationView navigationView ;
+   private BottomNavigationView bottomNavigationView ;
+   private FrameLayout  frameLayout ;
+   private TextView nameFragment ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        toolbar = findViewById(R.id.appBar);
-        setSupportActionBar(toolbar);
-        navigationView = findViewById(R.id.navigation_bar);
-        drawerLayout = findViewById(R.id.draw);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar,R.string.open_drawer,R.string.close_drawer);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
-        drawerToggle.setDrawerIndicatorEnabled(true);
-        drawerToggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.nav_main);
+
+        frameLayout =(FrameLayout)findViewById(R.id.main_frame);
+        nameFragment =(TextView)findViewById(R.id.name_fragment_id);
+//           Toolbar toolbar =findViewById(R.id.toolbar_up);
+//            setSupportActionBar(toolbar);
+        FragmentRecette fragmentRecette = new FragmentRecette();
+        setFragment(fragmentRecette);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                  switch (menuItem.getItemId()){
+                      case R.id.frigo_menu_id :
+                          nameFragment.setText("MonFrigo");
+                          //bottomNavigationView.setItemBackgroundResource(R.color.colorPrimary);
+                          FridgeFragment fridgeFragment = new FridgeFragment() ;
+                          setFragment(fridgeFragment);
+                          return true ;
+                      case R.id.recherche_menu_id :
+                          //bottomNavigationView.setItemBackgroundResource(R.color.colorPrimary);
+                          return true ;
+                      case R.id.recette_menu_id :
+                        //  bottomNavigationView.setItemBackgroundResource(R.color.colorPrimary);
+                          nameFragment.setText("Nos Recettes");
+                           FragmentRecette fragmentRecette = new FragmentRecette();
+                           setFragment(fragmentRecette);
+                          return true ;
+
+                          default:
+                              return  false ;
+                  }
+            }
+        });
+
+
+
+
     }
 
+   private void setFragment(Fragment fragment){
+       FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+       fragmentTransaction.replace(R.id.main_frame , fragment);
+       fragmentTransaction.commit();
+   }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-      //  Log.i("log selected",""+menuItem.getItemId());
-       // Toast.makeText(HomeActivity.this, ""+menuItem.getItemId(), Toast.LENGTH_SHORT).show();
 
-        Fragment fragment = null ;
-         switch (menuItem.getItemId()){
-            case R.id.id_frigo :
-               /* Intent intent = new Intent(HomeActivity.this,FridgeActivity.class);
-                startActivity(intent);*/
-               fragment = new FridgeFragment() ;
-                break;
 
-        }
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
-        }
-
-        return false;
-    }
 }
