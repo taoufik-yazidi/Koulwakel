@@ -42,8 +42,14 @@ public class HomeActivity extends AppCompatActivity  {
                           setFragment(fridgeFragment);
                           return true ;
                       case R.id.recherche_menu_id :
+                          nameFragment.setText("Recherche");
                           //bottomNavigationView.setItemBackgroundResource(R.color.colorPrimary);
+                          FragmentFilterRecherche fragmentFilterRecherche = new FragmentFilterRecherche();
+                          setFragment(fragmentFilterRecherche);
                           return true ;
+
+
+
                       case R.id.recette_menu_id :
                         //  bottomNavigationView.setItemBackgroundResource(R.color.colorPrimary);
                           nameFragment.setText("Nos Recettes");
